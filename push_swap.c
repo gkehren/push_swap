@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:06 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/25 15:12:48 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/05/26 18:53:12 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	main(int argc, char *argv[])
 		if (check_input(argv[i]) == -1)
 		{
 			write(1, "Error\n", 6);
-
 			return (0);
 		}
 		a[i - 1] = ft_atoi(argv[i]);
