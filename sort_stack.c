@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/26 19:57:01 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:23:24 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,12 @@ int	print_stack(int *a, int *b, int len)
 	return (0);
 }
 
-int	is_empty(int *a, int len)
-{
-	int i;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		if (a[i] != 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_sort(int *a, int *b, int len)
-{
-	int	i;
-
-	if (is_empty(b, len) == 0)
-		return (0);
-	i = 1;
-	while (a[i])
-	{
-		if (a[i] > a[i - 1])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
 int	is_sort_asc(int *a, int len)
 {
 	int	i;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < len)
 	{
 		if (a[i] < a[i + 1])
 			i++;
@@ -77,7 +46,7 @@ int	is_sort_dsc(int *a, int len)
 	int	i;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < len)
 	{
 		if (a[i] > a[i + 1])
 			i++;
@@ -94,7 +63,7 @@ int	find_little(int *a, int len)
 
 	i = 0;
 	little = a[0];
-	while (i < len - 1 && a[i])
+	while (i < len)
 	{
 		if (a[i] < little)
 				little = a[i];
@@ -105,38 +74,37 @@ int	find_little(int *a, int len)
 
 void	sorting(int *a, int *b, int len)
 {
-	int	pb;
-	int	i;
+	int	len_a;
+	int	len_b;
 
-	pb = 0;
-	i = 0;
-	while (is_sort_dsc(b, len) == 0 && is_empty(a, len) == 0)
+	len_a = len + 1;
+	len_b = 0;
+	while (len_a > 0)
 	{
-		if (a[0] != find_little(a, len))
+		if (a[0] != find_little(a, len_a))
 		{
-			rotate_a(a);
+			rotate_a(a, len_a);
 			write(1, "ra\n", 3);
 		}
-		if (a[0] == find_little(a, len))
+		if (a[0] == find_little(a, len_a))
 		{
-			pb += push_b(a, b, len);
+			len_b += push_b(a, b, len);
+			len_a--;
 			write(1, "pb\n", 3);
 		}
 	}
-	while (i <= pb)
+	while (len_b > 0)
 	{
-		push_a(a, b, len);
+		len_a += push_a(a, b, len);
+		len_b--;
 		write(1, "pa\n", 3);
-		i++;
 	}
 }
 
 int	sort_stack(int *a, int *b, int len)
 {
-	sorting(a, b, len + 1);
-	//if (check_sort(a, b, len) == 1)
-	//	print_stack(a, b, len);
-	//else
-	//	printf("no");
+	if (is_sort_asc(a, len) == 1)
+		return (0);
+	sorting(a, b, len);
 	return (0);
 }

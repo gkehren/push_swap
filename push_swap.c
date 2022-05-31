@@ -6,13 +6,13 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:06 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/26 18:53:12 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/05/31 14:17:47 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *s)
+long	ft_atoi(char *s)
 {
 	long	n;
 	int		sign;
@@ -54,11 +54,84 @@ int	check_input(char *s)
 	}
 	return (0);
 }
-
-int	free_int(int *a, int *b)
+#include <stdio.h>
+int	parse_str(char *s, int **c)
 {
-	free(a);
-	free(b);
+	char	**str;
+	int		*a;
+	int		i;
+	long	tmp;
+
+	i = 0;
+	str = ft_split(s, ' ');
+	while (str[i])
+		i++;
+	a = (int *)malloc(sizeof(int) * (i));
+	i = 0;
+	while (str[i])
+	{
+		if (check_input(str[i]) == -1)
+			return (-1);
+		tmp = ft_atoi(str[i]);
+		if (tmp < 2147483648 && tmp > -2147483649)
+			a[i] = tmp;
+		else
+			return (-1);
+		i++;
+	}
+	*c = a;
+	free(str);
+	return (i);
+}
+
+int	parse_argv(int argc, char **argv, int *a)
+{
+	int	i;
+	long	tmp;
+
+	i = 1;
+	while (i != argc)
+	{
+		if (check_input(argv[i]) == -1)
+			return (-1);
+		tmp = ft_atoi(argv[i]);
+		if (tmp < 2147483648 && tmp > -2147483649)
+			a[i - 1] = tmp;
+		else
+			return (-1);
+		i++;
+	}
+	return (i);
+}
+
+int is_in(int *a, int b)
+{
+	int	i;
+	int	c;
+
+	i = 0;
+	c = 0;
+	while (a[i])
+	{
+		if (a[i] == b)
+			c++;
+		i++;
+	}
+	return (c);
+}
+
+int	is_valid(int *a)
+{
+	int	i;
+
+	i = 0;
+	while (a[i])
+	{
+		if (is_in(a, a[i]) > 1)
+			return (-1);
+		else
+			i++;
+	}
 	return (0);
 }
 
@@ -69,19 +142,32 @@ int	main(int argc, char *argv[])
 	int	i;
 
 	i = 1;
-	a = (int *)malloc(sizeof(int) * argc);
-	b = (int *)malloc(sizeof(int) * argc);
-	while (i != argc)
+	if (argc == 1)
+		return (0);
+	if (argc == 2)
 	{
-		if (check_input(argv[i]) == -1)
+		i = parse_str(argv[1], &a);
+		if (i == -1 || is_valid(a) == -1)
 		{
 			write(1, "Error\n", 6);
 			return (0);
 		}
-		a[i - 1] = ft_atoi(argv[i]);
-		i++;
+		b = (int *)malloc(sizeof(int) * i);
+		sort_stack(a, b, i - 1);
 	}
-	sort_stack(a, b, i - 2);
-	free_int(a, b);
+	else
+	{
+		a = (int *)malloc(sizeof(int) * argc - 1);
+		b = (int *)malloc(sizeof(int) * argc - 1);
+		i = parse_argv(argc, argv, a);
+		if (i == -1 || is_valid(a) == -1)
+		{
+			write(1, "Error\n", 6);
+			return (0);
+		}
+		sort_stack(a, b, i - 2);
+	}
+	free(a);
+	free(b);
 	return (0);
 }

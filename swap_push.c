@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:56:20 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/26 18:49:27 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:22:50 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	swap_a(int *a)
 {
 	int	tmp;
 
-	if (!a[0] || !a[1])
-		return (-1);
 	tmp = a[0];
 	a[0] = a[1];
 	a[1] = tmp;
@@ -28,8 +26,6 @@ int	swap_b(int *b)
 {
 	int	tmp;
 
-	if (!b[0] || !b[1])
-		return (-1);
 	tmp = b[0];
 	b[0] = b[1];
 	b[1] = tmp;
@@ -40,9 +36,7 @@ int	push_a(int *a, int *b, int len)
 {
 	int	i;
 
-	if (!b[0])
-		return (-1);
-	i = len;
+	i = len + 1;
 	while (i >= 0)
 	{
 		a[i] = a[i - 1];
@@ -50,7 +44,7 @@ int	push_a(int *a, int *b, int len)
 	}
 	a[0] = b[0];
 	i = 0;
-	while (i <= len)
+	while (i <= len + 1)
 	{
 		b[i] = b[i + 1];
 		i++;
@@ -62,8 +56,6 @@ int	push_b(int *a, int *b, int len)
 {
 	int	i;
 
-	if (!a[0])
-		return (-1);
 	i = len;
 	while (i >= 0)
 	{
@@ -72,7 +64,7 @@ int	push_b(int *a, int *b, int len)
 	}
 	i = 0;
 	b[0] = a[0];
-	while (i <= len)
+	while (i < len + 1)
 	{
 		a[i] = a[i + 1];
 		i++;

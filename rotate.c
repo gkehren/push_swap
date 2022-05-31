@@ -6,58 +6,48 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:57:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/25 14:47:51 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:10:21 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	rotate_a(int *a)
+#include <stdio.h>
+int	rotate_a(int *a, int len)
 {
 	int	tmp;
-	int	len;
+	int	i;
 
-	if (!a[0])
-		return (-1);
-	len = 0;
+	i = 0;
 	tmp = a[0];
-	while (a[len])
+	while (i < len + 1)
 	{
-		a[len] = a[len + 1];
-		len++;
+		a[i] = a[i + 1];
+		i++;
 	}
-	a[len - 1] = tmp;
+	a[i - 2] = tmp;
 	return (0);
 }
 
-int	rotate_b(int *b)
+int	rotate_b(int *b, int len)
 {
 	int	tmp;
-	int	len;
+	int	i;
 
-	if (!b[0])
-		return (-1);
-	len = 0;
+	i = 0;
 	tmp = b[0];
-	while (b[len])
+	while (i < len + 1)
 	{
-		b[len] = b[len + 1];
-		len++;
+		b[i] = b[i + 1];
+		i++;
 	}
-	b[len - 1] = tmp;
+	b[i - 2] = tmp;
 	return (0);
 }
 
-int	rrotate_a(int *a)
+int	rrotate_a(int *a, int len)
 {
 	int	tmp;
-	int	len;
 
-	if (!a[0])
-		return (-1);
-	len = 0;
-	while (a[len] != 0)
-		len++;
 	tmp = a[len - 1];
 	a[len - 1] = 0;
 	len--;
@@ -70,16 +60,10 @@ int	rrotate_a(int *a)
 	return (0);
 }
 
-int	rrotate_b(int *b)
+int	rrotate_b(int *b, int len)
 {
 	int	tmp;
-	int	len;
 
-	if (!b[0])
-		return (-1);
-	len = 0;
-	while (b[len])
-		len++;
 	tmp = b[len - 1];
 	b[len - 1] = 0;
 	len--;
