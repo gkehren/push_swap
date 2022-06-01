@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:06 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/31 14:17:47 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/01 12:55:39 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	check_input(char *s)
 	}
 	return (0);
 }
-#include <stdio.h>
+
 int	parse_str(char *s, int **c)
 {
 	char	**str;
@@ -86,7 +86,7 @@ int	parse_str(char *s, int **c)
 
 int	parse_argv(int argc, char **argv, int *a)
 {
-	int	i;
+	int		i;
 	long	tmp;
 
 	i = 1;
@@ -104,7 +104,7 @@ int	parse_argv(int argc, char **argv, int *a)
 	return (i);
 }
 
-int is_in(int *a, int b)
+int	is_in(int *a, int b)
 {
 	int	i;
 	int	c;

@@ -6,12 +6,12 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:57:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/31 17:10:21 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/01 12:56:34 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	rotate_a(int *a, int len)
 {
 	int	tmp;

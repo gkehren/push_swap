@@ -6,11 +6,11 @@
 #    By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 10:42:10 by gkehren           #+#    #+#              #
-#    Updated: 2022/05/30 14:06:00 by gkehren          ###   ########.fr        #
+#    Updated: 2022/06/01 16:32:37 by gkehren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	push_swap.c sort_stack.c rotate.c swap_push.c ft_split.c
+SRCS			=	push_swap.c sort_stack.c rotate.c swap_push.c ft_split.c little_sort.c
 
 OBJS			= ${SRCS:.c=.o}
 

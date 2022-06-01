@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/31 15:50:06 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:32:24 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int		push_a(int *a, int *b, int len);
 int		push_b(int *a, int *b, int len);
 char	**ft_split(char const *s, char c);
 int		print_stack(int *a, int *b, int len);
+int		is_sort_dsc(int *a, int len);
+int		is_sort_asc(int *a, int len);
+int		ra_or_rra(int *a, int len);
 
 #endif
