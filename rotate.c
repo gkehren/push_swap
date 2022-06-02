@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:57:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/01 12:56:34 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/02 14:12:55 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	rotate_a(int *a, int len)
 		i++;
 	}
 	a[i - 2] = tmp;
+	write(1, "ra\n", 3);
 	return (0);
 }
 
@@ -41,6 +42,7 @@ int	rotate_b(int *b, int len)
 		i++;
 	}
 	b[i - 2] = tmp;
+	write(1, "rb\n", 3);
 	return (0);
 }
 
@@ -57,6 +59,7 @@ int	rrotate_a(int *a, int len)
 		len--;
 	}
 	a[0] = tmp;
+	write(1, "rra\n", 4);
 	return (0);
 }
 
@@ -73,5 +76,6 @@ int	rrotate_b(int *b, int len)
 		len--;
 	}
 	b[0] = tmp;
+	write(1, "rrb\n", 4);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:56:20 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/31 17:22:50 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/02 14:13:25 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	swap_a(int *a)
 	tmp = a[0];
 	a[0] = a[1];
 	a[1] = tmp;
+	write(1, "sa\n", 3);
 	return (0);
 }
 
@@ -29,6 +30,7 @@ int	swap_b(int *b)
 	tmp = b[0];
 	b[0] = b[1];
 	b[1] = tmp;
+	write(1, "sb\n", 3);
 	return (0);
 }
 
@@ -49,6 +51,7 @@ int	push_a(int *a, int *b, int len)
 		b[i] = b[i + 1];
 		i++;
 	}
+	write(1, "pa\n", 3);
 	return (1);
 }
 
@@ -69,5 +72,6 @@ int	push_b(int *a, int *b, int len)
 		a[i] = a[i + 1];
 		i++;
 	}
+	write(1, "pb\n", 3);
 	return (1);
 }

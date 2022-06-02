@@ -6,47 +6,109 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/01 16:34:22 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:56:44 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_bigger(int *a, int len)
+int	sort_3(int *a, int len)
+{
+	if (a[0] > a[1] && a[0] < a[2] && a[1] < a[2])
+		swap_a(a);
+	else if (a[0] > a[1] && a[0] > a[2] && a[1] < a[2])
+		rotate_a(a, len);
+	else if (a[0] < a[1] && a[0] > a[2] && a[1] > a[2])
+		rrotate_a(a, len);
+	else if (a[0] > a[1] && a[0] > a[2] && a[1] > a[2])
+	{
+		swap_a(a);
+		rrotate_a(a, len);
+	}
+	else if (a[0] < a[1] && a[0] < a[2] && a[1] > a[2])
+	{
+		swap_a(a);
+		rotate_a(a, len);
+	}
+	return (0);
+}
+
+int	find_max(int *a, int len)
 {
 	int	i;
-	int	bigger;
+	int	max;
 
 	i = 0;
-	bigger = a[0];
+	max = a[0];
 	while (i < len)
 	{
-		if (a[i] > bigger)
-				bigger = a[i];
+		if (a[i] > max)
+				max = a[i];
 		i++;
 	}
-	return (bigger);
+	return (max);
 }
 
-int	ra_or_rra(int *a, int len)
+int	push_max_b(int *a, int *b, int len)
 {
 	int	i;
-	int	bigger;
 
 	i = 0;
-	bigger = find_bigger(a, len);
-	while (a[i] != bigger)
+	while (a[i] != find_max(a, len + 1))
 		i++;
-	if (i < len / 2)
-		return (1);
-	else
-		return (0);
+	while (a[0] != find_max(a, len + 1))
+	{
+		if (i < len / 2)
+			rotate_a(a, len + 1);
+		else
+			rrotate_a(a, len + 1);
+	}
+	push_b(a, b, len);
+	return (0);
 }
 
-int	little_sort(int *a, int *b, int len)
+int	push_min_b(int *a, int *b, int len)
 {
-	while (is_sort_asc(a, len) == 0)
-	{
+	int	i;
 
+	i = 0;
+	while (a[i] != find_min(a, len + 1))
+		i++;
+	while (a[0] != find_min(a, len + 1))
+	{
+		if (i < len / 2)
+			rotate_a(a, len + 1);
+		else
+			rrotate_a(a, len + 1);
 	}
+	push_b(a, b, len);
+	return (0);
+}
+
+int	sort_5(int *a, int *b, int len)
+{
+	int	len_a;
+	int	len_b;
+
+	if (len == 4)
+	{
+		push_min_b(a, b, len);
+		push_max_b(a, b, len - 1);
+		len_a = 3;
+		len_b = 2;
+		sort_3(a, len_a);
+		len_a += push_a(a, b, len_b);
+		rotate_a(a, len_a);
+		len_a += push_a(a, b, len_a);
+	}
+	else
+	{
+		push_min_b(a, b, len);
+		len_a = 2;
+		len_b = 1;
+		sort_3(a, len_a);
+		len_a += push_a(a, b, len_b);
+	}
+	//print_stack(a, b, len);
+	return (0);
 }
