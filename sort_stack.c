@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/02 16:55:33 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:58:02 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ void	sorting(int *a, int *b, int len)
 
 int	sort_stack(int *a, int *b, int len)
 {
-	//print_stack(a, b, len);
 	if (is_sort_asc(a, len) == 1)
 		return (0);
 	else if (len == 1)

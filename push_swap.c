@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:06 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/01 12:55:39 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:57:09 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ int	parse_argv(int argc, char **argv, int *a)
 	return (i);
 }
 
-int	is_in(int *a, int b)
+int	is_in(int *a, int b, int len)
 {
 	int	i;
 	int	c;
 
 	i = 0;
 	c = 0;
-	while (a[i])
+	while (i < len)
 	{
 		if (a[i] == b)
 			c++;
@@ -120,14 +120,14 @@ int	is_in(int *a, int b)
 	return (c);
 }
 
-int	is_valid(int *a)
+int	is_valid(int *a, int len)
 {
 	int	i;
 
 	i = 0;
-	while (a[i])
+	while (i < len)
 	{
-		if (is_in(a, a[i]) > 1)
+		if (is_in(a, a[i], len) > 1)
 			return (-1);
 		else
 			i++;
@@ -147,7 +147,7 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		i = parse_str(argv[1], &a);
-		if (i == -1 || is_valid(a) == -1)
+		if (i == -1 || is_valid(a, i - 1) == -1)
 		{
 			write(1, "Error\n", 6);
 			return (0);
@@ -160,7 +160,7 @@ int	main(int argc, char *argv[])
 		a = (int *)malloc(sizeof(int) * argc - 1);
 		b = (int *)malloc(sizeof(int) * argc - 1);
 		i = parse_argv(argc, argv, a);
-		if (i == -1 || is_valid(a) == -1)
+		if (i == -1 || is_valid(a, i - 2) == -1)
 		{
 			write(1, "Error\n", 6);
 			return (0);

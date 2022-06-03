@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:56:20 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/02 14:13:25 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:52:43 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	push_b(int *a, int *b, int len)
 	int	i;
 
 	i = len;
-	while (i >= 0)
+	while (i > 0)
 	{
 		b[i] = b[i - 1];
 		i--;
