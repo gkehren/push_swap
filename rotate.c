@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:57:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/04 17:14:21 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/05 14:54:39 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	rrotate_a(int *a, int len)
 	tmp = a[len - 1];
 	a[len - 1] = 0;
 	len--;
-	while (len >= 0)
+	while (len > 0)
 	{
 		a[len] = a[len - 1];
 		len--;
@@ -70,7 +70,7 @@ int	rrotate_b(int *b, int len)
 	tmp = b[len - 1];
 	b[len - 1] = 0;
 	len--;
-	while (len >= 0)
+	while (len > 0)
 	{
 		b[len] = b[len - 1];
 		len--;
