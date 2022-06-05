@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   little_sort.c                                      :+:      :+:    :+:   */
+/*   little_sort_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/02 16:56:44 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/05 12:43:20 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ int	sort_3(int *a, int len)
 	return (0);
 }
 
-int	find_max(int *a, int len)
+int	find_min(int *a, int len)
 {
 	int	i;
-	int	max;
+	int	min;
 
 	i = 0;
-	max = a[0];
+	min = a[0];
 	while (i < len)
 	{
-		if (a[i] > max)
-				max = a[i];
+		if (a[i] < min)
+				min = a[i];
 		i++;
 	}
-	return (max);
+	return (min);
 }
 
 int	push_max_b(int *a, int *b, int len)
@@ -109,6 +109,5 @@ int	sort_5(int *a, int *b, int len)
 		sort_3(a, len_a);
 		len_a += push_a(a, b, len_b);
 	}
-	//print_stack(a, b, len);
 	return (0);
 }

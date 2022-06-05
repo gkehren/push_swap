@@ -6,11 +6,36 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:30:15 by gkehren           #+#    #+#             */
-/*   Updated: 2022/05/30 13:30:17 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/05 14:35:51 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	ft_atoi(char *s)
+{
+	long	n;
+	int		sign;
+	int		i;
+
+	i = 0;
+	sign = 1;
+	n = 0;
+	if (!s)
+		return (-1);
+	if (s[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (s[i])
+	{
+		n *= 10;
+		n += s[i] - '0';
+		i++;
+	}
+	return (n * sign);
+}
 
 static void	ft_split_word(char *dest, char const *src, char c)
 {

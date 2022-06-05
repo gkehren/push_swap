@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/02 16:55:33 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/05 14:41:03 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,86 +41,19 @@ int	is_sort_asc(int *a, int len)
 	return (1);
 }
 
-int	is_sort_dsc(int *a, int len)
+void	sort_100(int *a, int *b, int len)
 {
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (a[i] > a[i + 1])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int	find_min(int *a, int len)
-{
-	int	i;
-	int	min;
-
-	i = 0;
-	min = a[0];
-	while (i < len)
-	{
-		if (a[i] < min)
-				min = a[i];
-		i++;
-	}
-	return (min);
-}
-
-int	ra_or_rra(int *a, int find, int len)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] != find)
-		i++;
-	if (i < len / 2)
-		return (1);
-	else
-		return (0);
-}
-
-void	sorting(int *a, int *b, int len)
-{
-	int	len_a;
+	int	mediane;
 	int	len_b;
 
-	len_a = len + 1;
-	len_b = 0;
-	while (is_sort_asc(a, len_a) == 0)
-	{
-		if (a[0] != find_min(a, len_a))
-		{
-			if (ra_or_rra(a, find_min(a, len_a), len_a) == 1)
-				rotate_a(a, len_a);
-			else
-				rrotate_a(a, len_a);
-		}
-		if (is_sort_asc(a, len_a) == 1)
-			break;
-		if (a[0] == find_min(a, len_a))
-		{
-			len_b += push_b(a, b, len);
-			len_a--;
-		}
-	}
-	//print_stack(a, b, len);
-	while (len_b > 0)
-	{
-		len_a += push_a(a, b, len);
-		len_b--;
-		//print_stack(a, b, len);
-	}
+	mediane = find_mediane(a, len);
+	len_b = len - push_b_mediane(a, b, len, mediane);
+	sort_a_mediane(a, b, len - len_b, len);
+	sort_b_mediane(a, b, len_b + 1, len);
 }
 
 int	sort_stack(int *a, int *b, int len)
 {
-	//print_stack(a, b, len);
 	if (is_sort_asc(a, len) == 1)
 		return (0);
 	else if (len == 1)
@@ -130,6 +63,6 @@ int	sort_stack(int *a, int *b, int len)
 	else if (len < 5)
 		sort_5(a, b, len);
 	else
-		sorting(a, b, len);
+		sort_100(a, b, len);
 	return (0);
 }
