@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/06 16:35:51 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/07 01:04:43 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,47 +58,60 @@ int	is_sort_dsc(int *a, int len)
 
 void	sort_100(int *a, int *b, int len)
 {
-	int	mediane;
 	int	len_b;
 
-	mediane = find_mediane(a, len);
-	len_b = len - push_b_mediane(a, b, len, mediane);
+	len_b = len - push_b_mediane(a, b, len, find_mediane(a, len));
 	sort_a_mediane(a, b, len - len_b, len);
 	push_a_mediane(a, b, len_b + 1, len);
 }
 
-void	sort_b_mediane(int *a, int *b, int len, int len_push)
+int	push_aled(int *a, int *b, int len, int mediane)
 {
-	int	len_b;
 	int	i;
+	int	count;
 
 	i = 0;
-	len_b = len;
+	count = 0;
 	while (i < len + 1)
 	{
-		//printf("max = %d | len_b = %d\n", find_max(b, len_b), len_b);
-		if (b[0] != find_max(b, len_b))
-			need_top_b(b, len_b, find_max(b, len_b));
-		//printf("b[0] = %d\n", b[0]);
-		len_b -= push_a(a, b, len_push);
-		i++;
+		if (a[i] < mediane)
+		{
+			need_top_a(a, len + 1, a[i]);
+			len -= push_b(a, b, len);
+			i = 0;
+			count++;
+		}
+		else
+			i++;
 	}
-	while (i > 0)
-		i -= push_b(a, b, len_push);
+	return (count);
+}
+
+void	aled(int *a, int *b, int len_a, int len_b, int len_push)
+{
+	while (len_push > 0)
+	{
+		//printf("len_a = %d | len_b = %d | len_push = %d\n", len_a, len_b, len_push);
+		need_top_b(b, len_b, find_max(b, len_b));
+		len_a += push_a(a, b, len_a);
+		len_b--;
+		len_push--;
+	}
 }
 
 void	sort_any(int *a, int *b, int len)
 {
-	int	mediane;
 	int	len_b;
 	int	len_a;
 
-	len_a = len;
-	mediane = find_mediane(a, len);
-	len_b = len - push_b_mediane(a, b, len - 1, mediane / 2);
-	len_a -= len_b;
-	(void)len_a;
-	sort_b_mediane(a, b, len_b, len);
+	len_b = push_aled(a, b, len, (find_mediane(a, len)));
+	len_a = len - len_b;
+	//printf("len_a = %d | len_b = %d\n", len_a, len_b);
+	len_b += push_b_mediane(a, b, len_a, find_mediane(a, len_a));
+	len_a = len - len_b;
+	sort_a_mediane(a, b, len_a + 2, len_b);
+	//aled(a, b, len_a, len_b, len_b);
+	//printf("len_a = %d | len_b = %d | len = %d\n", len_a, len_b, len);
 	print_stack(a, b, len);
 }
 
