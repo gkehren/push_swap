@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/05 14:43:21 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:40:26 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	sort_a_mediane(int *a, int *b, int len, int len_push)
 	}
 }
 
-void	sort_b_mediane(int *a, int *b, int len, int len_push)
+void	push_a_mediane(int *a, int *b, int len, int len_push)
 {
 	while (len != 0)
 	{

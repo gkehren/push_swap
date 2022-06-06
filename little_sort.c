@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/05 14:54:39 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/06 13:29:55 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,6 @@ int	sort_3(int *a, int len)
 		rotate_a(a, len);
 	}
 	return (0);
-}
-
-int	find_min(int *a, int len)
-{
-	int	i;
-	int	min;
-
-	i = 0;
-	min = a[0];
-	while (i < len)
-	{
-		if (a[i] < min)
-				min = a[i];
-		i++;
-	}
-	return (min);
 }
 
 int	push_max_b(int *a, int *b, int len)

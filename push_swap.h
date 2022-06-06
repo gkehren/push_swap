@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/05 14:48:49 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/06 13:47:17 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		rrotate_b(int *b, int len);
 int		is_in(int *a, int b);
 int		is_valid(int *a);
 int		is_sort_asc(int *a, int len);
+int		is_sort_dsc(int *a, int len);
 int		find_max(int *a, int len);
 int		find_min(int *a, int len);
 int		how_many_moves(int *a, int len, int move);
@@ -48,7 +49,7 @@ void	need_top_b(int *b, int len, int move);
 int		find_mediane(int *a, int len);
 int		push_b_mediane(int *a, int *b, int len, int mediane);
 void	sort_a_mediane(int *a, int *b, int len, int len_push);
-void	sort_b_mediane(int *a, int *b, int len, int len_push);
+void	push_a_mediane(int *a, int *b, int len, int len_push);
 
 /*******SORT*******/
 
