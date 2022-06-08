@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/06 13:47:17 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/08 13:27:26 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int		find_mediane(int *a, int len);
 int		push_b_mediane(int *a, int *b, int len, int mediane);
 void	sort_a_mediane(int *a, int *b, int len, int len_push);
 void	push_a_mediane(int *a, int *b, int len, int len_push);
+int		push_aled(int *a, int *b, int len_a, int len_b);
+void	aled(int *a, int *b, int len_a, int len_b);
+void	sort_b(int *a, int *b, int len_a, int len_b);
 
 /*******SORT*******/
 
@@ -57,6 +60,7 @@ int		sort_stack(int *a, int *b, int len);
 int		sort_3(int *a, int len);
 int		sort_5(int *a, int *b, int len);
 void	sort_100(int *a, int *b, int len);
+void	sort_any(int *a, int *b, int len);
 
 int		print_stack(int *a, int *b, int len);
 #endif
