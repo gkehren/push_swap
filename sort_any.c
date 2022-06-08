@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 13:30:35 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/08 13:25:27 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/08 17:11:12 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,37 @@ int	push_aled(int *a, int *b, int len_a, int len_b)
 	return (count);
 }
 
+void	push_aled_b(int *a, int *b, int len_a, int len_b)
+{
+	int	i;
+	int	count;
+	int	len_b_t;
+	int	mediane;
+
+	i = 0;
+	len_b_t = len_b;
+	count = 0;
+	mediane = find_mediane(b, len_b);
+	while (i < len_b + 1)
+	{
+		if (b[i] > mediane)
+		{
+			need_top_b(b, len_b + 1, b[i]);
+			len_b -= push_a(a, b, len_a);
+			len_a++;
+			i = 0;
+			count++;
+		}
+		else
+			i++;
+	}
+	while (count > 0)
+	{
+		len_b += push_b(a, b, len_b + len_b_t + 3);
+		count--;
+	}
+}
+
 void	aled(int *a, int *b, int len_a, int len_b)
 {
 	int	len;
@@ -65,6 +96,38 @@ void	aled(int *a, int *b, int len_a, int len_b)
 		len_a += push_a(a, b, len);
 		len_b--;
 		len_push--;
+	}
+}
+
+void	sort_a_mediane_any(int *a, int *b, int len, int len_push)
+{
+	int	len_a;
+	int	len_b;
+//	int	c;
+
+	len_a = len;
+	len_b = 0;
+	//c = push_aled(a, b, len_a, len_b);
+	//while (c >= 0)
+	//{
+	//	need_top_b(b, c, find_max(b, c));
+	//	push_a(a, b, len + c);
+	//	c--;
+	//}
+	while (is_sort_asc(a, len_a) == 0)
+	{
+		if (a[0] != find_min(a, len_a))
+			need_top_a(a, len_a, find_min(a, len_a));
+		if (a[0] == find_min(a, len_a))
+		{
+			len_b += push_b(a, b, len_push);
+			len_a--;
+		}
+	}
+	while (len_b > 0)
+	{
+		len_a += push_a(a, b, len_push);
+		len_b--;
 	}
 }
 

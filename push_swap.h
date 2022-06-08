@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/08 13:27:26 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/08 17:03:27 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ void	need_top_b(int *b, int len, int move);
 int		find_mediane(int *a, int len);
 int		push_b_mediane(int *a, int *b, int len, int mediane);
 void	sort_a_mediane(int *a, int *b, int len, int len_push);
+void	sort_a_mediane_any(int *a, int *b, int len, int len_push);
 void	push_a_mediane(int *a, int *b, int len, int len_push);
 int		push_aled(int *a, int *b, int len_a, int len_b);
+void	push_aled_b(int *a, int *b, int len_a, int len_b);
 void	aled(int *a, int *b, int len_a, int len_b);
 void	sort_b(int *a, int *b, int len_a, int len_b);
 
