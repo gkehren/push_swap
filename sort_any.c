@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 13:30:35 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/08 17:11:12 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:03:48 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ void	push_aled_b(int *a, int *b, int len_a, int len_b)
 		else
 			i++;
 	}
+	sort_b(a, b, len_a, len_b_t / 2 + 1);
 	while (count > 0)
 	{
+		need_top_a(a, len_a, find_min(a, len_a));
 		len_b += push_b(a, b, len_b + len_b_t + 3);
+		len_a--;
 		count--;
 	}
 }
@@ -148,10 +151,12 @@ void	sort_b(int *a, int *b, int len_a, int len_b)
 		len_b--;
 		c++;
 	}
-	while (c > 0)
-	{
-		len_b += push_b(a, b, len_b_t + len_a_t);
-		len_a--;
-		c--;
-	}
+	(void)len_a_t;
+	(void)len_b_t;
+	//while (c > 0)
+	//{
+	//	len_b += push_b(a, b, len_b_t + len_a_t);
+	//	len_a--;
+	//	c--;
+	//}
 }

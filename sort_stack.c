@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/08 17:22:52 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:07:11 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,29 @@ void	sort_any(int *a, int *b, int len)
 	len_b = push_aled(a, b, len, 0) - 1;
 	len_a = len - len_b - 1;
 	push_aled_b(a, b, len_a, len_b);
-	sort_b(a, b, len_a, len_b + 1);
 	len_b += push_aled(a, b, len_a, len_b);
 	len_a = len - len_b - 1;
-	sort_a_mediane_any(a, b, len_a + 1, len_a + len_b + 1);
-	aled(a, b, len_a, len_b);
+	sort_b(a, b, len_a, len_b);
+	len_a++;
+	//while (len_a > 0)
+	//{
+	//	if (a[0] != find_max(a, len_a))
+	//		need_top_a(a, len_a, find_max(a, len_a));
+	//	if (a[0] == find_max(a, len_a))
+	//	{
+	//		len_b += push_b(a, b, len_b);
+	//		len_a--;
+	//	}
+	//}
+	//while (len_b > 0)
+	//{
+	//	len_a += push_a(a, b, len_a + len_b);
+	//	len_b--;
+	//}
+	//len_b += push_aled(a, b, len_a, len_b);
+	//len_a = len - len_b - 1;
+	//sort_a_mediane_any(a, b, len_a, len_a + len_b);
+	//aled(a, b, len_a, len_b);
 	//print_stack(a, b, len);
 	//printf("len_a = %d | len_b = %d | len = %d\n", len_a, len_b, len);
 }
