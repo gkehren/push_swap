@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/08 17:03:27 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/10 13:22:15 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sort_a_mediane(int *a, int *b, int len, int len_push);
 void	sort_a_mediane_any(int *a, int *b, int len, int len_push);
 void	push_a_mediane(int *a, int *b, int len, int len_push);
 int		push_aled(int *a, int *b, int len_a, int len_b);
-void	push_aled_b(int *a, int *b, int len_a, int len_b);
+int		push_aled_b(int *a, int *b, int len_a, int len_b);
 void	aled(int *a, int *b, int len_a, int len_b);
 void	sort_b(int *a, int *b, int len_a, int len_b);
 
