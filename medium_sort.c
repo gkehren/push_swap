@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/06 14:40:26 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 12:29:57 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ void	sort_mediane(int *tmp, int len)
 int	find_mediane(int *a, int len)
 {
 	int	*tmp;
+	int	mediane;
 	int	i;
 
 	i = 0;
-	tmp = (int *)malloc(sizeof(int) * len);
+	tmp = (int *)malloc(sizeof(int) * len + 1);
 	while (i < len + 1)
 	{
 		tmp[i] = a[i];
@@ -50,9 +51,10 @@ int	find_mediane(int *a, int len)
 	}
 	sort_mediane(tmp, len);
 	if ((len + 1) % 2 == 1)
-		return (tmp[(len + 1) / 2]);
+		mediane = tmp[(len + 1) / 2];
 	else
-		return ((tmp[len / 2] + tmp[len / 2 + 1]) / 2);
+		mediane = (tmp[len / 2] + tmp[len / 2 + 1]) / 2;
+	return (free(tmp), mediane);
 }
 
 int	push_b_mediane(int *a, int *b, int len, int mediane)
