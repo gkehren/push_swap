@@ -6,20 +6,20 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:36:28 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/05 14:37:04 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 21:40:24 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_in(int *a, int b)
+int	is_in(int *a, int b, int len)
 {
 	int	i;
 	int	c;
 
 	i = 0;
 	c = 0;
-	while (a[i])
+	while (i < len + 1)
 	{
 		if (a[i] == b)
 			c++;
@@ -28,14 +28,14 @@ int	is_in(int *a, int b)
 	return (c);
 }
 
-int	is_valid(int *a)
+int	is_valid(int *a, int len)
 {
 	int	i;
 
 	i = 0;
-	while (a[i])
+	while (i < len + 1)
 	{
-		if (is_in(a, a[i]) > 1)
+		if (is_in(a, a[i], len) > 1)
 			return (-1);
 		else
 			i++;

@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/10 13:22:15 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 21:42:06 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int		rrotate_b(int *b, int len);
 
 /*******UTILS*******/
 
-int		is_in(int *a, int b);
-int		is_valid(int *a);
+int		is_in(int *a, int b, int len);
+int		is_valid(int *a, int len);
 int		is_sort_asc(int *a, int len);
 int		is_sort_dsc(int *a, int len);
 int		find_max(int *a, int len);

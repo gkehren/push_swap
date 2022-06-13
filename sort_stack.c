@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/10 13:40:25 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 21:58:01 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_100(int *a, int *b, int len)
 	sort_a_mediane(a, b, len - len_b, len);
 	push_a_mediane(a, b, len_b + 1, len);
 }
-#include <stdio.h>
+
 void	sort_any(int *a, int *b, int len)
 {
 	int	len_b;
@@ -70,8 +70,6 @@ void	sort_any(int *a, int *b, int len)
 	len_a = len - len_b - 1;
 	sort_a_mediane_any(a, b, len_a + 1, len_a + len_b + 1);
 	aled(a, b, len_a, len_b + 1);
-	//print_stack(a, b, len);
-	//printf("len_a = %d | len_b = %d | len = %d\n", len_a, len_b, len);
 }
 
 int	sort_stack(int *a, int *b, int len)

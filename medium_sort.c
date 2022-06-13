@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/13 12:29:57 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 21:50:36 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	find_mediane(int *a, int len)
 	int	i;
 
 	i = 0;
-	tmp = (int *)malloc(sizeof(int) * len + 1);
+	tmp = (int *)malloc(sizeof(int) * (len + 1));
 	while (i < len + 1)
 	{
 		tmp[i] = a[i];

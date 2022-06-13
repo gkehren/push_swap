@@ -6,25 +6,26 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 13:30:35 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/10 13:22:25 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/13 21:58:33 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-int	print_stack(int *a, int *b, int len)
-{
-	int	i;
 
-	i = 0;
-	while (i <= len)
-	{
-		printf("%d | %d\n", a[i], b[i]);
-		i++;
-	}
-	printf("\n");
-	return (0);
-}
+//#include <stdio.h>
+//int	print_stack(int *a, int *b, int len)
+//{
+//	int	i;
+
+//	i = 0;
+//	while (i <= len)
+//	{
+//		printf("%d | %d\n", a[i], b[i]);
+//		i++;
+//	}
+//	printf("\n");
+//	return (0);
+//}
 
 int	push_aled(int *a, int *b, int len_a, int len_b)
 {
@@ -97,17 +98,9 @@ void	sort_a_mediane_any(int *a, int *b, int len, int len_push)
 {
 	int	len_a;
 	int	len_b;
-//	int	c;
 
 	len_a = len;
 	len_b = 0;
-	//c = push_aled(a, b, len_a, len_b);
-	//while (c >= 0)
-	//{
-	//	need_top_b(b, c, find_max(b, c));
-	//	push_a(a, b, len + c);
-	//	c--;
-	//}
 	while (is_sort_asc(a, len_a) == 0)
 	{
 		if (a[0] != find_min(a, len_a))
