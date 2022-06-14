@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/13 21:58:01 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:26:41 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int	sort_stack(int *a, int *b, int len)
 		sort_100(a, b, len);
 	else
 		sort_any(a, b, len);
+	//print_stack(a, b, len);
 	return (0);
 }

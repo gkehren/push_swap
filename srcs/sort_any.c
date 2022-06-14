@@ -6,26 +6,26 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 13:30:35 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/13 21:58:33 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:19:25 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//#include <stdio.h>
-//int	print_stack(int *a, int *b, int len)
-//{
-//	int	i;
+#include <stdio.h>
+int	print_stack(int *a, int *b, int len)
+{
+	int	i;
 
-//	i = 0;
-//	while (i <= len)
-//	{
-//		printf("%d | %d\n", a[i], b[i]);
-//		i++;
-//	}
-//	printf("\n");
-//	return (0);
-//}
+	i = 0;
+	while (i <= len)
+	{
+		printf("%d | %d\n", a[i], b[i]);
+		i++;
+	}
+	printf("\n");
+	return (0);
+}
 
 int	push_aled(int *a, int *b, int len_a, int len_b)
 {

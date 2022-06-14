@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/13 21:42:06 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:19:47 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
+int	print_stack(int *a, int *b, int len);
 /*******PARSING*******/
 
 int		check_input(char *s);
@@ -64,5 +64,4 @@ int		sort_5(int *a, int *b, int len);
 void	sort_100(int *a, int *b, int len);
 void	sort_any(int *a, int *b, int len);
 
-int		print_stack(int *a, int *b, int len);
 #endif

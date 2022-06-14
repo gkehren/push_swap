@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/06 13:29:55 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:27:31 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	sort_5(int *a, int *b, int len)
 		len_a = 2;
 		len_b = 1;
 		sort_3(a, len_a);
-		len_a += push_a(a, b, len_b);
+		len_a += push_a(a, b, len_b + 1);
 	}
 	return (0);
 }
