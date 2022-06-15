@@ -6,36 +6,82 @@
 #    By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 10:42:10 by gkehren           #+#    #+#              #
-#    Updated: 2022/06/14 15:32:27 by gkehren          ###   ########.fr        #
+#    Updated: 2022/06/15 18:37:58 by gkehren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	./srcs/push_swap.c ./srcs/parsing.c ./srcs/sort_stack.c ./srcs/sort_utils.c ./srcs/rotate.c ./srcs/swap_push.c ./srcs/ft_split.c ./srcs/little_sort.c ./srcs/medium_sort.c ./srcs/sort_any.c
-SRCS_BONUS		=	./bonus/checker.c ./bonus/parsing.c ./bonus/ft_split.c ./bonus/rotate.c ./bonus/swap_push.c
+FILES:=	push_swap parsing sort_stack sort_utils rotate swap_push ft_split little_sort medium_sort sort_any
+FILES_BONUS:=	checker parsing ft_split rotate swap_push
 
-OBJS			= ${SRCS:.c=.o}
-OBJS_BONUS		= ${SRCS_BONUS:.c=.o}
+NAME:= push_swap
 
-NAME			= push_swap
+# ------------------
+CC:=clang
+SRCPATH:=srcs/
+BONUSPATH:=bonus/
+HDRPATH:=include/
+CCHPATH:=obj/
+CCHPATH_BONUS:=obj/
+IFLAGS:=-I ${HDRPATH}
+CFLAGS:=-Wall -Wextra -Werror ${IFLAGS}
+# ==================
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -g3
+# ----- Colors -----
+BLACK:="\033[1;30m"
+RED:="\033[1;31m"
+GREEN:="\033[1;32m"
+CYAN:="\033[1;35m"
+PURPLE:="\033[1;36m"
+WHITE:="\033[1;37m"
+EOC:="\033[0;0m"
+# ==================
 
-all:			${NAME}
+# ------ Auto ------
+SRC:=$(addprefix $(SRCPATH),$(addsuffix .c,$(FILES)))
+SRC_BONUS:=$(addprefix $(BONUSPATH),$(addsuffix .c,$(FILES_BONUS)))
+OBJ:=$(addprefix $(CCHPATH),$(addsuffix .o,$(FILES)))
+OBJ_BONUS:=$(addprefix $(CCHPATH_BONUS),$(addsuffix .o,$(FILES_BONUS)))
+# ==================
+CCHF:=.cache_exists
 
-${NAME}:		${OBJS}
-						${CC} ${CFLAGS} -I./srcs -o ${NAME} ${OBJS}
+all: ${NAME}
 
-bonus:			${OBJS_BONUS}
-						${CC} ${CFLAGS} -I./bonus -o checker ${OBJS_BONUS}
+${NAME}: ${OBJ}
+	@echo ${CYAN} " - Compiling $@" $(RED)
+	@${CC} ${CFLAGS} ${SRC} -o ${NAME}
+	@echo $(GREEN) " - OK" $(EOC)
+
+${CCHPATH}%.o: ${SRCPATH}%.c | ${CCHF}
+	@echo ${PURPLE} " - Compiling $< into $@" ${EOC}
+	@${CC} ${CFLAGS} -c $< -o $@
+
+%.c:
+	@echo ${RED}"Missing file : $@" ${EOC}
+
+$(CCHF):
+	@mkdir $(CCHPATH)
+	@touch $(CCHF)
+
+bonus:	${OBJ_BONUS}
+	@echo ${CYAN} " - Compiling $@" $(RED)
+	@${CC} ${CFLAGS} ${SRC_BONUS} -o checker
+	@echo $(GREEN) " - OK" $(EOC)
+
+${CCHPATH_BONUS}%.o: ${BONUSPATH}%.c | ${CCHF}
+	@echo ${PURPLE} " - Compiling $< into $@" ${EOC}
+	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-						${RM} ${OBJS} ${OBJS_BONUS}
+	@rm -rf ${CCHPATH}
+	@rm -f ${CCHF}
 
-fclean:			clean
-						${RM} ${NAME} checker
+fclean:	clean
+	@rm -f ${NAME}
+	@rm -f checker
+	@rm -f ${NAME}.dSYM/
+	@rm -f checker.dSYM/
 
-re:				fclean ${NAME}
+re:	fclean
+	@${MAKE} all
 
 .PHONY:			all bonus clean fclean re
