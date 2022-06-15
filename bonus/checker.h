@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:03:40 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/14 15:09:58 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/15 02:01:29 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	**ft_split(char const *s, char c);
 
 /*******MOVE*******/
 
-int		push_a(int *a, int *b, int len);
-int		push_b(int *a, int *b, int len);
+int		push_a(int *a, int *b, int len_a, int len_b);
+int		push_b(int *a, int *b, int len_a, int len_b);
 int		swap_a(int *a);
 int		swap_b(int *b);
 int		rotate_a(int *a, int len);

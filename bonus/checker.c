@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:54:38 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/14 17:44:49 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/15 15:39:39 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (s1[i] != '\0')
 	{
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
-#include <stdio.h>
+
 char	*get_prompt()
 {
 	char	*inst;
@@ -61,21 +61,21 @@ char	*get_prompt()
 	bytes = 1;
 	inst = (char *)malloc(sizeof(char) * 1);
 	inst[0] = '\0';
-	buf = (char *)malloc(sizeof(char) * 2);
+	buf = (char *)malloc(sizeof(char) * 3);
 	if (!buf)
-		return (NULL);
+		return (0);
 	while (bytes != 0)
 	{
-		bytes = read(0, buf, 4);
+		bytes = read(0, buf, 2);
 		if (bytes == -1)
 		{
 			free(buf);
-			return (NULL);
+			return (0);
 		}
 		buf[bytes] = '\0';
 		inst = ft_strjoin(inst, buf);
 	}
-	return (inst);
+	return (free(buf), inst);
 }
 
 int	is_equal(char *s1, char *s2)
@@ -98,7 +98,7 @@ int	check_stack(int *a, int len_a, int len_b)
 	int	i;
 
 	i = 0;
-	if (len_b != 0)
+	if (len_b > -1)
 		return (0);
 	while (i < len_a)
 	{
@@ -109,7 +109,20 @@ int	check_stack(int *a, int len_a, int len_b)
 	}
 	return (1);
 }
+//#include <stdio.h>
+//int	print_stack(int *a, int *b, int len)
+//{
+//	int	i;
 
+//	i = 0;
+//	while (i <= len)
+//	{
+//		printf("%d | %d\n", a[i], b[i]);
+//		i++;
+//	}
+//	printf("\n");
+//	return (0);
+//}
 int	valid_sort(int *a, int *b, int len, char **inst)
 {
 	int	len_a;
@@ -118,7 +131,7 @@ int	valid_sort(int *a, int *b, int len, char **inst)
 
 	i = 0;
 	len_a = len;
-	len_b = 0;
+	len_b = -1;
 	while (inst[i])
 	{
 		if (is_equal(inst[i], "sa") == 1)
@@ -132,31 +145,31 @@ int	valid_sort(int *a, int *b, int len, char **inst)
 		}
 		else if (is_equal(inst[i], "pa") == 1)
 		{
-			len_a += push_a(a, b, len);
+			len_a += push_a(a, b, len_a + 1, len_b);
 			len_b--;
 		}
 		else if (is_equal(inst[i], "pb") == 1)
 		{
-			len_b += push_b(a, b, len);
+			len_b += push_b(a, b, len_a, len_b + 1);
 			len_a--;
 		}
 		else if (is_equal(inst[i], "ra") == 1)
-			rotate_a(a, len);
+			rotate_a(a, len_a);
 		else if (is_equal(inst[i], "rb") == 1)
-			rotate_b(b, len);
+			rotate_b(b, len_b);
 		else if (is_equal(inst[i], "rr") == 1)
 		{
-			rotate_a(a, len);
-			rotate_b(b, len);
+			rotate_a(a, len_a);
+			rotate_b(b, len_b);
 		}
 		else if (is_equal(inst[i], "rra") == 1)
-			rrotate_a(a, len);
+			rrotate_a(a, len_a);
 		else if (is_equal(inst[i], "rrb") == 1)
-			rrotate_b(b, len);
+			rrotate_b(b, len_b);
 		else if (is_equal(inst[i], "rrr") == 1)
 		{
-			rrotate_a(a, len);
-			rrotate_b(b, len);
+			rrotate_a(a, len_a);
+			rrotate_b(b, len_b);
 		}
 		i++;
 	}
@@ -166,34 +179,22 @@ int	valid_sort(int *a, int *b, int len, char **inst)
 		return (0);
 }
 
-#include <stdio.h>
-int	print_stack(int *a, int *b, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i <= len)
-	{
-		printf("%d | %d\n", a[i], b[i]);
-		i++;
-	}
-	printf("\n");
-	return (0);
-}
-
 int	checker(int *a, int *b, int len)
 {
 	char	**instructions;
 	char	*tmp;
+	int	i;
 
+	i = 0;
 	tmp = get_prompt();
 	instructions = ft_split(tmp, '\n');
 	if (valid_sort(a, b, len, instructions) == 1)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	print_stack(a, b, len);
-	return (0);
+	while (instructions[i])
+		free(instructions[i++]);
+	return (free(tmp), free(instructions), 0);
 }
 
 int	main(int argc, char **argv)
