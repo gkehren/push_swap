@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:29:15 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/14 14:29:34 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:45:00 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 int	is_in(int *a, int b, int len)
 {

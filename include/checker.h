@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:03:40 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/15 02:01:29 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 13:19:40 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+/*******STRUCT*******/
+
+struct s_stack
+{
+	int	*a;
+	int	*b;
+	int	len_a;
+	int	len_b;
+};
 
 /*******PARSING*******/
 
@@ -25,6 +35,13 @@ int		parse_str(char *s, int **c);
 int		parse_argv(int argc, char **argv, int *a);
 long	ft_atoi(char *s);
 char	**ft_split(char const *s, char c);
+
+/*******UTILS*******/
+
+char	*get_prompt(void);
+int		is_equal(char *s1, char *s2);
+int		check_stack(int *a, int len_a, int len_b);
+int		valid_sort(struct s_stack *stack, char **inst);
 
 /*******MOVE*******/
 

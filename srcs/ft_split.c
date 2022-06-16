@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 13:30:15 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/05 14:35:51 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:46:30 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 long	ft_atoi(char *s)
 {

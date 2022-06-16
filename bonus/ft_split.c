@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:36:04 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/14 14:36:14 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:45:26 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 long	ft_atoi(char *s)
 {
@@ -79,7 +79,7 @@ char	*ft_strnew(size_t size)
 	i = 0;
 	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
-		return (NULL);
+		return (0);
 	while (i < (int)size)
 	{
 		str[i] = '\0';
@@ -114,6 +114,6 @@ char	**ft_split(char const *s, char c)
 			k++;
 		}
 	}
-	tab[k] = NULL;
+	tab[k] = 0;
 	return (tab);
 }

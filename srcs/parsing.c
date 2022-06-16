@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:36:28 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/13 21:40:24 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:46:27 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	is_in(int *a, int b, int len)
 {

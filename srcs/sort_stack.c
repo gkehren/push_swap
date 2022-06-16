@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/14 18:26:41 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:46:23 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	is_sort_asc(int *a, int len)
 {
@@ -86,6 +86,5 @@ int	sort_stack(int *a, int *b, int len)
 		sort_100(a, b, len);
 	else
 		sort_any(a, b, len);
-	//print_stack(a, b, len);
 	return (0);
 }

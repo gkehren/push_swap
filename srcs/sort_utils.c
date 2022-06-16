@@ -6,11 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:56:30 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/06 16:07:02 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 12:46:22 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	find_max(int *a, int len)
 {
