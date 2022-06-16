@@ -6,26 +6,11 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:54:38 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 13:34:51 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/16 13:47:40 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
-
-//#include <stdio.h>
-//int	print_stack(int *a, int *b, int len)
-//{
-//	int	i;
-
-//	i = 0;
-//	while (i <= len)
-//	{
-//		printf("%d | %d\n", a[i], b[i]);
-//		i++;
-//	}
-//	printf("\n");
-//	return (0);
-//}
 
 int	checker(int *a, int *b, int len)
 {
