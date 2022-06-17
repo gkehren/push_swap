@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:36:28 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 10:23:53 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 11:52:35 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	parse_str(char *s, int **c)
 		i++;
 	}
 	*c = a;
-	return (memfree(str), free(str), free(a), i);
+	return (memfree(str), free(str), i);
 }
 
 int	parse_argv(int argc, char **argv, int *a)
