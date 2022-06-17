@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 12:46:28 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 16:43:31 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sort_mediane(int *tmp, int len)
 	while (o < len + 1)
 	{
 		i = 0;
-		min = find_min(tmp + j, len - j + 1);
+		min = find_min(tmp + j, len - j);
 		temp = tmp[j];
 		while (tmp[i] != min)
 			i++;
@@ -57,54 +57,56 @@ int	find_mediane(int *a, int len)
 	return (free(tmp), mediane);
 }
 
-int	push_b_mediane(int *a, int *b, int len, int mediane)
+int		push_b_mediane(struct s_stack *stack, int mediane)
 {
 	int	i;
 
 	i = 0;
-	while (i < len + 1)
+	while (i < stack->len_a + 1)
 	{
-		if (a[i] < mediane)
+		if (stack->a[i] <= mediane)
 		{
-			need_top_a(a, len + 1, a[i]);
-			len -= push_b(a, b, len);
+			need_top_a(stack->a, stack->len_a, stack->a[i]);
+			stack->len_b += push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			stack->len_a--;
 			i = 0;
 		}
 		else
 			i++;
 	}
-	return (len + 1);
+	return (0);
 }
 
-void	sort_a_mediane(int *a, int *b, int len, int len_push)
+void	sort_a_mediane(struct s_stack *stack)
 {
-	int	len_a;
-	int	len_b;
+	int	c;
 
-	len_a = len;
-	len_b = 0;
-	while (is_sort_asc(a, len_a) == 0)
+	c = 0;
+	while (is_sort_asc(stack->a, stack->len_a) == 0)
 	{
-		if (a[0] != find_min(a, len_a))
-			need_top_a(a, len_a, find_min(a, len_a));
-		if (a[0] == find_min(a, len_a))
+		if (stack->a[0] != find_min(stack->a, stack->len_a))
+			need_top_a(stack->a, stack->len_a, find_min(stack->a, stack->len_a));
+		if (stack->a[0] == find_min(stack->a, stack->len_a))
 		{
-			len_b += push_b(a, b, len_push);
-			len_a--;
+			stack->len_b += push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			stack->len_a--;
+			c++;
 		}
 	}
-	while (len_b > 0)
+	while (c > 0)
 	{
-		len_a += push_a(a, b, len_push);
-		len_b--;
+		stack->len_a += push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		stack->len_b--;
+		c--;
 	}
 }
 
-void	push_a_mediane(int *a, int *b, int len, int len_push)
+void	push_a_mediane(struct s_stack *stack)
 {
-	while (len != 0)
+	while (stack->len_b != -1)
 	{
-		need_top_b(b, len, find_max(b, len));
-		len -= push_a(a, b, len_push - len);
+		need_top_b(stack->b, stack->len_b, find_max(stack->b, stack->len_b));
+		stack->len_a += push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		stack->len_b--;
 	}
 }

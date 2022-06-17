@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 10:18:49 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 14:44:26 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+void	print_stack(int *a, int *b, int len);
+/*******STRUCT*******/
+
+struct s_stack
+{
+	int	*a;
+	int	*b;
+	int	len_a;
+	int	len_b;
+	int	trigger;
+};
 
 /*******PARSING*******/
 
@@ -28,7 +39,9 @@ char	**ft_split(char const *s, char c);
 /*******MOVE*******/
 
 int		push_a(int *a, int *b, int len);
+int		push_a_test(int *a, int *b, int len_a, int len_b);
 int		push_b(int *a, int *b, int len);
+int		push_b_test(int *a, int *b, int len_a, int len_b);
 int		swap_a(int *a);
 int		swap_b(int *b);
 int		rotate_a(int *a, int len);
@@ -48,10 +61,10 @@ int		how_many_moves(int *a, int len, int move);
 void	need_top_a(int *a, int len, int move);
 void	need_top_b(int *b, int len, int move);
 int		find_mediane(int *a, int len);
-int		push_b_mediane(int *a, int *b, int len, int mediane);
-void	sort_a_mediane(int *a, int *b, int len, int len_push);
+int		push_b_mediane(struct s_stack *stack, int mediane);
+void	sort_a_mediane(struct s_stack *stack);
 void	sort_a_mediane_any(int *a, int *b, int len, int len_push);
-void	push_a_mediane(int *a, int *b, int len, int len_push);
+void	push_a_mediane(struct s_stack *stack);
 int		push_aled(int *a, int *b, int len_a, int len_b);
 int		push_aled_b(int *a, int *b, int len_a, int len_b);
 void	aled(int *a, int *b, int len_a, int len_b);

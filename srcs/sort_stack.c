@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 11:38:51 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 16:43:41 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,31 @@ int	is_sort_dsc(int *a, int len)
 	}
 	return (1);
 }
+#include <stdio.h>
+void	print_stack(int *a, int *b, int len)
+{
+	int	i;
 
+	i = 0;
+	while (i < len + 1)
+	{
+		printf("%d | %d\n", a[i], b[i]);
+		i++;
+	}
+	printf("\n");
+}
 void	sort_100(int *a, int *b, int len)
 {
-	int	len_b;
+	struct s_stack	stack;
 
-	len_b = len - push_b_mediane(a, b, len, find_mediane(a, len));
-	sort_a_mediane(a, b, len - len_b, len);
-	push_a_mediane(a, b, len_b + 1, len);
+	stack.a = a;
+	stack.b = b;
+	stack.len_a = len;
+	stack.len_b = -1;
+	stack.trigger = 0;
+	push_b_mediane(&stack, find_mediane(stack.a, stack.len_a));
+	sort_a_mediane(&stack);
+	push_a_mediane(&stack);
 }
 
 void	sort_any(int *a, int *b, int len)

@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:56:30 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 12:46:22 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 16:32:00 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_max(int *a, int len)
 
 	i = 0;
 	max = a[0];
-	while (i < len)
+	while (i < len + 1)
 	{
 		if (a[i] > max)
 				max = a[i];
@@ -35,7 +35,7 @@ int	find_min(int *a, int len)
 
 	i = 0;
 	min = a[0];
-	while (i < len)
+	while (i < len + 1)
 	{
 		if (a[i] < min)
 				min = a[i];
@@ -51,9 +51,9 @@ int	how_many_moves(int *a, int len, int move)
 
 	i = 0;
 	count = 0;
-	while (i < len && a[i] != move)
+	while (i < len + 1 && a[i] != move)
 		i++;
-	if (i < len / 2 + 1)
+	if (i < (len + 1) / 2 )
 	{
 		while (i != 0)
 		{
@@ -63,7 +63,7 @@ int	how_many_moves(int *a, int len, int move)
 	}
 	else
 	{
-		while (i < len)
+		while (i < len + 1)
 		{
 			i++;
 			count++;
