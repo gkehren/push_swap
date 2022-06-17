@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:54:38 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 10:29:33 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 12:30:13 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	memfree(char **s)
 	i = 0;
 	while (s[i])
 		free(s[i++]);
+	free(s);
 }
 
 int	checker(int *a, int *b, int len)
@@ -35,11 +36,12 @@ int	checker(int *a, int *b, int len)
 	stack.b = b;
 	stack.len_a = len;
 	stack.len_b = -1;
+	stack.trigger = 0;
 	if (valid_sort(&stack, instructions) == 1)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	return (memfree(instructions), free(tmp), free(instructions), 0);
+	return (memfree(instructions), free(tmp), 0);
 }
 
 int	main(int argc, char **argv)

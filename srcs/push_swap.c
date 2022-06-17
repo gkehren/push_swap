@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:06 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 11:57:28 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 12:22:17 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	memfree(char **s)
 	i = 0;
 	while (s[i])
 		free(s[i++]);
+	free(s);
 }
 
 int	main(int argc, char *argv[])
