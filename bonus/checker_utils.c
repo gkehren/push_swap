@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:48:12 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 13:34:23 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:50:17 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,16 @@ int	is_equal(char *s1, char *s2)
 	return (1);
 }
 
-int	check_stack(int *a, int len_a, int len_b)
+int	check_stack(struct s_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	if (len_b > -1)
+	if (stack->len_b > -1)
 		return (0);
-	while (i < len_a - 1)
+	while (i < stack->len_a - stack->trigger)
 	{
-		if (a[i] < a[i + 1])
+		if (stack->a[i] < stack->a[i + 1])
 			i++;
 		else
 			return (0);

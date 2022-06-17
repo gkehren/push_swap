@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 13:04:03 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 13:24:54 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:53:46 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	is_rotate(struct s_stack *stack, char *inst)
 
 void	is_push(struct s_stack *stack, char *inst)
 {
+	if (stack->len_a == -1)
+		stack->trigger = 1;
 	if (is_equal(inst, "pa") == 1)
 	{
 		push_a(stack->a, stack->b, stack->len_a + 1, stack->len_b);
@@ -75,7 +77,7 @@ int	valid_sort(struct s_stack *stack, char **inst)
 		is_rotate(stack, inst[i]);
 		i++;
 	}
-	if (check_stack(stack->a, stack->len_a, stack->len_b) == 1)
+	if (check_stack(stack) == 1)
 		return (1);
 	else
 		return (0);

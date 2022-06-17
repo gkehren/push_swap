@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:03:40 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 13:19:40 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:50:29 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ struct s_stack
 	int	*b;
 	int	len_a;
 	int	len_b;
+	int	trigger;
 };
 
 /*******PARSING*******/
@@ -33,6 +34,7 @@ int		is_valid(int *a, int len);
 int		check_input(char *s);
 int		parse_str(char *s, int **c);
 int		parse_argv(int argc, char **argv, int *a);
+void	memfree(char **s);
 long	ft_atoi(char *s);
 char	**ft_split(char const *s, char c);
 
@@ -40,7 +42,7 @@ char	**ft_split(char const *s, char c);
 
 char	*get_prompt(void);
 int		is_equal(char *s1, char *s2);
-int		check_stack(int *a, int len_a, int len_b);
+int		check_stack(struct s_stack *stack);
 int		valid_sort(struct s_stack *stack, char **inst);
 
 /*******MOVE*******/

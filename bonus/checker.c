@@ -6,11 +6,20 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:54:38 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 13:47:40 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:29:33 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
+
+void	memfree(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		free(s[i++]);
+}
 
 int	checker(int *a, int *b, int len)
 {
@@ -30,9 +39,7 @@ int	checker(int *a, int *b, int len)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	while (instructions[i])
-		free(instructions[i++]);
-	return (free(tmp), free(instructions), 0);
+	return (memfree(instructions), free(tmp), free(instructions), 0);
 }
 
 int	main(int argc, char **argv)
@@ -48,7 +55,7 @@ int	main(int argc, char **argv)
 	{
 		i = parse_str(argv[1], &a);
 		if (i == -1 || is_valid(a, i - 1) == -1)
-			return (free(a), write(STDERR_FILENO, "Error\n", 6), 0);
+			return (write(STDERR_FILENO, "Error\n", 6), 0);
 		b = (int *)malloc(sizeof(int) * i);
 		checker(a, b, i - 1);
 	}

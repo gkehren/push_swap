@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:36:28 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 12:46:27 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:23:53 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	parse_str(char *s, int **c)
 	while (str[i])
 	{
 		if (check_input(str[i]) == -1)
-			return (-1);
+			return (memfree(str), free(str), free(a), -1);
 		tmp = ft_atoi(str[i]);
 		if (tmp < 2147483648 && tmp > -2147483649)
 			a[i] = tmp;
@@ -86,8 +86,7 @@ int	parse_str(char *s, int **c)
 		i++;
 	}
 	*c = a;
-	free(str);
-	return (i);
+	return (memfree(str), free(str), free(a), i);
 }
 
 int	parse_argv(int argc, char **argv, int *a)

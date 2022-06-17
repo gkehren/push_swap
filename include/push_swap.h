@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/16 12:39:45 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/17 10:18:49 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int		check_input(char *s);
 int		parse_str(char *s, int **c);
 int		parse_argv(int argc, char **argv, int *a);
+void	memfree(char **s);
 long	ft_atoi(char *s);
 char	**ft_split(char const *s, char c);
 
