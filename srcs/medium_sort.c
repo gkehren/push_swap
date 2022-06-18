@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 00:49:36 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 02:12:24 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	push_b_mediane(struct s_stack *stack, int mediane)
 		if (stack->a[i] <= mediane)
 		{
 			need_top_a(stack->a, stack->len_a, stack->a[i]);
-			stack->len_b += push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			stack->len_b++;
 			stack->len_a--;
 			i = 0;
 		}
@@ -80,22 +81,26 @@ int	push_b_mediane(struct s_stack *stack, int mediane)
 void	sort_a_mediane(struct s_stack *stack)
 {
 	int	c;
+	int	min;
 
 	c = 0;
 	while (is_sort_asc(stack->a, stack->len_a) == 0)
 	{
-		if (stack->a[0] != find_min(stack->a, stack->len_a))
-			need_top_a(stack->a, stack->len_a, find_min(stack->a, stack->len_a));
-		if (stack->a[0] == find_min(stack->a, stack->len_a))
+		min = find_min(stack->a, stack->len_a);
+		if (stack->a[0] != min)
+			need_top_a(stack->a, stack->len_a, min);
+		if (stack->a[0] == min)
 		{
-			stack->len_b += push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			push_b_test(stack->a, stack->b, stack->len_a, stack->len_b);
+			stack->len_b++;
 			stack->len_a--;
 			c++;
 		}
 	}
 	while (c > 0)
 	{
-		stack->len_a += push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		stack->len_a++;
 		stack->len_b--;
 		c--;
 	}
@@ -106,7 +111,8 @@ void	push_a_mediane(struct s_stack *stack)
 	while (stack->len_b != -1)
 	{
 		need_top_b(stack->b, stack->len_b, find_max(stack->b, stack->len_b));
-		stack->len_a += push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		push_a_test(stack->a, stack->b, stack->len_a, stack->len_b);
+		stack->len_a++;
 		stack->len_b--;
 	}
 }
