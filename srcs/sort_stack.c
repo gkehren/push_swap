@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 01:16:08 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 03:17:00 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,6 @@ int	is_sort_asc(int *a, int len)
 	return (1);
 }
 
-int	is_sort_dsc(int *a, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (a[i] > a[i + 1])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-//#include <stdio.h>
-//void	print_stack(int *a, int *b, int len)
-//{
-//	int	i;
-
-//	i = 0;
-//	while (i < len + 1)
-//	{
-//		printf("%d | %d\n", a[i], b[i]);
-//		i++;
-//	}
-//	printf("\n");
-//}
-
 void	sort_100(int *a, int *b, int len)
 {
 	struct s_stack	stack;
@@ -64,7 +35,6 @@ void	sort_100(int *a, int *b, int len)
 	stack.b = b;
 	stack.len_a = len;
 	stack.len_b = -1;
-	stack.trigger = 0;
 	push_b_mediane(&stack, find_mediane(stack.a, stack.len_a));
 	sort_a_mediane(&stack);
 	push_a_mediane(&stack);
@@ -72,23 +42,23 @@ void	sort_100(int *a, int *b, int len)
 
 void	sort_any(int *a, int *b, int len)
 {
-	int	len_b;
-	int	len_a;
+	struct s_stack	stack;
 
-	len_b = push_aled(a, b, len, 0) - 1;
-	len_a = len - len_b - 1;
-	len_b -= push_aled_b(a, b, len_a, len_b);
-	len_a = len - len_b - 1;
-	len_b -= push_aled_b(a, b, len_a, len_b);
-	len_a = len - len_b - 1;
-	len_b += push_aled(a, b, len_a, len_b);
-	len_a = len - len_b - 1;
-	len_b += push_aled(a, b, len_a, len_b);
-	len_a = len - len_b - 1;
-	len_b += push_aled(a, b, len_a, len_b);
-	len_a = len - len_b - 1;
-	sort_a_mediane_any(a, b, len_a + 1, len_a + len_b + 1);
-	aled(a, b, len_a, len_b + 1);
+	stack.a = a;
+	stack.b = b;
+	stack.len_a = len;
+	stack.len_b = -1;
+	push_aled(&stack);
+	push_aled_b(&stack);
+	push_aled_b(&stack);
+	push_aled(&stack);
+	push_aled_b(&stack);
+	push_aled_b(&stack);
+	push_aled(&stack);
+	push_aled(&stack);
+	push_aled(&stack);
+	sort_a_mediane(&stack);
+	push_a_mediane(&stack);
 }
 
 int	sort_stack(int *a, int *b, int len)

@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 01:47:39 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 03:17:03 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ struct s_stack
 	int	*b;
 	int	len_a;
 	int	len_b;
-	int	trigger;
 };
 
 /*******PARSING*******/
@@ -54,7 +53,6 @@ int		rrotate_b(int *b, int len);
 int		is_in(int *a, int b, int len);
 int		is_valid(int *a, int len);
 int		is_sort_asc(int *a, int len);
-int		is_sort_dsc(int *a, int len);
 int		find_max(int *a, int len);
 int		find_min(int *a, int len);
 int		how_many_moves(int *a, int len, int move);
@@ -63,12 +61,10 @@ void	need_top_b(int *b, int len, int move);
 int		find_mediane(int *a, int len);
 int		push_b_mediane(struct s_stack *stack, int mediane);
 void	sort_a_mediane(struct s_stack *stack);
-void	sort_a_mediane_any(int *a, int *b, int len, int len_push);
 void	push_a_mediane(struct s_stack *stack);
-int		push_aled(int *a, int *b, int len_a, int len_b);
-int		push_aled_b(int *a, int *b, int len_a, int len_b);
-void	aled(int *a, int *b, int len_a, int len_b);
-void	sort_b(int *a, int *b, int len_a, int len_b);
+int		push_aled(struct s_stack *stack);
+int		push_aled_b(struct s_stack *stack);
+void	aled(struct s_stack *stack);
 
 /*******SORT*******/
 
