@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 12:11:26 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 02:02:30 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int	push_max_b(int *a, int *b, int len)
 	int	i;
 
 	i = 0;
-	while (a[i] != find_max(a, len + 1))
+	while (a[i] != find_max(a, len))
 		i++;
-	while (a[0] != find_max(a, len + 1))
+	while (a[0] != find_max(a, len))
 	{
 		if (i < len / 2)
-			rotate_a(a, len + 1);
+			rotate_a(a, len);
 		else
-			rrotate_a(a, len + 1);
+			rrotate_a(a, len);
 	}
 	push_b(a, b, len);
-	return (0);
+	return (1);
 }
 
 int	push_min_b(int *a, int *b, int len)
@@ -56,42 +56,43 @@ int	push_min_b(int *a, int *b, int len)
 	int	i;
 
 	i = 0;
-	while (a[i] != find_min(a, len + 1))
+	while (a[i] != find_min(a, len))
 		i++;
-	while (a[0] != find_min(a, len + 1))
+	while (a[0] != find_min(a, len))
 	{
 		if (i < len / 2)
-			rotate_a(a, len + 1);
+			rotate_a(a, len);
 		else
-			rrotate_a(a, len + 1);
+			rrotate_a(a, len);
 	}
 	push_b(a, b, len);
-	return (0);
+	return (1);
 }
 
 int	sort_5(int *a, int *b, int len)
 {
-	int	len_a;
-	int	len_b;
+	struct s_stack	stack;
 
+	stack.len_a = len;
+	stack.len_b = -1;
 	if (len == 4)
 	{
-		push_min_b(a, b, len);
-		push_max_b(a, b, len - 1);
-		len_a = 3;
-		len_b = 2;
-		sort_3(a, len_a);
-		len_a += push_a(a, b, len_b);
-		rotate_a(a, len_a);
-		len_a += push_a(a, b, len_b - 1);
+		stack.len_b += push_min_b(a, b, stack.len_a);
+		stack.len_a--;
+		stack.len_b += push_max_b(a, b, stack.len_a);
+		stack.len_a--;
+		sort_3(a, stack.len_a);
+		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
+		stack.len_b--;
+		rotate_a(a, stack.len_a);
+		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
 	}
 	else
 	{
-		push_min_b(a, b, len);
-		len_a = 2;
-		len_b = 1;
-		sort_3(a, len_a);
-		len_a += push_a(a, b, len_b);
+		stack.len_b += push_min_b(a, b, stack.len_a);
+		stack.len_a--;
+		sort_3(a, stack.len_a);
+		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
 	}
 	return (0);
 }

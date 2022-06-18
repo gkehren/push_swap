@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 14:44:26 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 01:47:39 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-void	print_stack(int *a, int *b, int len);
+
 /*******STRUCT*******/
 
 struct s_stack

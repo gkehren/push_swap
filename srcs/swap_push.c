@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:56:20 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 14:18:52 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 01:19:59 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	push_b(int *a, int *b, int len)
 	}
 	i = 0;
 	b[0] = a[0];
-	while (i < len + 1)
+	while (i < len)
 	{
 		a[i] = a[i + 1];
 		i++;
@@ -113,7 +113,7 @@ int	push_b_test(int *a, int *b, int len_a, int len_b)
 	}
 	i = 0;
 	b[0] = a[0];
-	while (i < len_a + 1)
+	while (i < len_a)
 	{
 		a[i] = a[i + 1];
 		i++;

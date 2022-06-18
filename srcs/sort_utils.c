@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:56:30 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 16:32:00 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 01:48:27 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	how_many_moves(int *a, int len, int move)
 	count = 0;
 	while (i < len + 1 && a[i] != move)
 		i++;
-	if (i < (len + 1) / 2 )
+	if (i < (len + 1) / 2)
 	{
 		while (i != 0)
 		{

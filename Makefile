@@ -6,7 +6,7 @@
 #    By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 10:42:10 by gkehren           #+#    #+#              #
-#    Updated: 2022/06/17 14:03:35 by gkehren          ###   ########.fr        #
+#    Updated: 2022/06/18 00:19:57 by gkehren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,8 @@ clean:
 fclean:	clean
 	@rm -f ${NAME}
 	@rm -f ${BONUS}
-	@rm -f ${NAME}.dSYM/
-	@rm -f ${BONUS}.dSYM/
+	@rm -rf ${NAME}.dSYM/
+	@rm -rf ${BONUS}.dSYM/
 
 re:	fclean
 	@${MAKE} all

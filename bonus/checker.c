@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:54:38 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 12:30:13 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 00:19:38 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	checker(int *a, int *b, int len)
 	struct s_stack	stack;
 	char			**instructions;
 	char			*tmp;
-	int				i;
 
-	i = 0;
 	tmp = get_prompt();
 	instructions = ft_split(tmp, '\n');
 	stack.a = a;

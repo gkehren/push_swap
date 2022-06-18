@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 16:43:41 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 01:16:08 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,21 @@ int	is_sort_dsc(int *a, int len)
 	}
 	return (1);
 }
-#include <stdio.h>
-void	print_stack(int *a, int *b, int len)
-{
-	int	i;
 
-	i = 0;
-	while (i < len + 1)
-	{
-		printf("%d | %d\n", a[i], b[i]);
-		i++;
-	}
-	printf("\n");
-}
+//#include <stdio.h>
+//void	print_stack(int *a, int *b, int len)
+//{
+//	int	i;
+
+//	i = 0;
+//	while (i < len + 1)
+//	{
+//		printf("%d | %d\n", a[i], b[i]);
+//		i++;
+//	}
+//	printf("\n");
+//}
+
 void	sort_100(int *a, int *b, int len)
 {
 	struct s_stack	stack;

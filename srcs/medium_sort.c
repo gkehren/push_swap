@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:40:13 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/17 16:43:31 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 00:49:36 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	find_mediane(int *a, int len)
 	return (free(tmp), mediane);
 }
 
-int		push_b_mediane(struct s_stack *stack, int mediane)
+int	push_b_mediane(struct s_stack *stack, int mediane)
 {
 	int	i;
 
