@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 03:20:47 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 16:16:25 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	push_max_b(int *a, int *b, int len_a, int len_b)
 		else
 			rrotate_a(a, len_a);
 	}
-	push_b_test(a, b, len_a, len_b);
+	push_b(a, b, len_a, len_b);
 	return (1);
 }
 
@@ -65,7 +65,7 @@ int	push_min_b(int *a, int *b, int len_a, int len_b)
 		else
 			rrotate_a(a, len_a);
 	}
-	push_b_test(a, b, len_a, len_b);
+	push_b(a, b, len_a, len_b);
 	return (1);
 }
 
@@ -82,17 +82,17 @@ int	sort_5(int *a, int *b, int len)
 		stack.len_b += push_max_b(a, b, stack.len_a, stack.len_b);
 		stack.len_a--;
 		sort_3(a, stack.len_a);
-		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
+		stack.len_a += push_a(a, b, stack.len_a, stack.len_b);
 		stack.len_b--;
 		rotate_a(a, stack.len_a);
-		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
+		stack.len_a += push_a(a, b, stack.len_a, stack.len_b);
 	}
 	else
 	{
 		stack.len_b += push_min_b(a, b, stack.len_a, stack.len_b);
 		stack.len_a--;
 		sort_3(a, stack.len_a);
-		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
+		stack.len_a += push_a(a, b, stack.len_a, stack.len_b);
 	}
 	return (0);
 }

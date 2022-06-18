@@ -6,11 +6,11 @@
 #    By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 10:42:10 by gkehren           #+#    #+#              #
-#    Updated: 2022/06/18 00:19:57 by gkehren          ###   ########.fr        #
+#    Updated: 2022/06/18 16:35:36 by gkehren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES:=	push_swap parsing sort_stack sort_utils rotate swap_push ft_split little_sort medium_sort sort_any
+FILES:=	push_swap parsing sort_stack sort_utils rotate swap_push ft_split little_sort medium_sort
 FILES_BONUS:=	checker parsing ft_split rotate swap_push checker_utils is_check
 
 NAME:= push_swap

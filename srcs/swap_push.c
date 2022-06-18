@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:56:20 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 03:18:16 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 16:15:21 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	swap_b(int *b)
 	return (0);
 }
 
-int	push_a_test(int *a, int *b, int len_a, int len_b)
+int	push_a(int *a, int *b, int len_a, int len_b)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ int	push_a_test(int *a, int *b, int len_a, int len_b)
 	return (1);
 }
 
-int	push_b_test(int *a, int *b, int len_a, int len_b)
+int	push_b(int *a, int *b, int len_a, int len_b)
 {
 	int	i;
 

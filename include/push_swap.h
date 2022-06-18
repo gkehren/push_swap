@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:42:23 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 03:20:22 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 16:36:23 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char	**ft_split(char const *s, char c);
 
 /*******MOVE*******/
 
-int		push_a_test(int *a, int *b, int len_a, int len_b);
-int		push_b_test(int *a, int *b, int len_a, int len_b);
+int		push_a(int *a, int *b, int len_a, int len_b);
+int		push_b(int *a, int *b, int len_a, int len_b);
 int		swap_a(int *a);
 int		swap_b(int *b);
 int		rotate_a(int *a, int len);
@@ -57,12 +57,10 @@ int		how_many_moves(int *a, int len, int move);
 void	need_top_a(int *a, int len, int move);
 void	need_top_b(int *b, int len, int move);
 int		find_mediane(int *a, int len);
-int		push_b_mediane(struct s_stack *stack, int mediane);
+int		push_b_mediane(struct s_stack *stack);
 void	sort_a_mediane(struct s_stack *stack);
 void	push_a_mediane(struct s_stack *stack);
-int		push_aled(struct s_stack *stack);
-int		push_aled_b(struct s_stack *stack);
-void	aled(struct s_stack *stack);
+int		push_mediane(struct s_stack *stack);
 
 /*******SORT*******/
 
