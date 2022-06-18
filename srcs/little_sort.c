@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:28:47 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 02:02:30 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/18 03:20:47 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,39 @@ int	sort_3(int *a, int len)
 	return (0);
 }
 
-int	push_max_b(int *a, int *b, int len)
+int	push_max_b(int *a, int *b, int len_a, int len_b)
 {
 	int	i;
 
 	i = 0;
-	while (a[i] != find_max(a, len))
+	while (a[i] != find_max(a, len_a))
 		i++;
-	while (a[0] != find_max(a, len))
+	while (a[0] != find_max(a, len_a))
 	{
-		if (i < len / 2)
-			rotate_a(a, len);
+		if (i < len_a / 2)
+			rotate_a(a, len_a);
 		else
-			rrotate_a(a, len);
+			rrotate_a(a, len_a);
 	}
-	push_b(a, b, len);
+	push_b_test(a, b, len_a, len_b);
 	return (1);
 }
 
-int	push_min_b(int *a, int *b, int len)
+int	push_min_b(int *a, int *b, int len_a, int len_b)
 {
 	int	i;
 
 	i = 0;
-	while (a[i] != find_min(a, len))
+	while (a[i] != find_min(a, len_a))
 		i++;
-	while (a[0] != find_min(a, len))
+	while (a[0] != find_min(a, len_a))
 	{
-		if (i < len / 2)
-			rotate_a(a, len);
+		if (i < len_a / 2)
+			rotate_a(a, len_a);
 		else
-			rrotate_a(a, len);
+			rrotate_a(a, len_a);
 	}
-	push_b(a, b, len);
+	push_b_test(a, b, len_a, len_b);
 	return (1);
 }
 
@@ -77,9 +77,9 @@ int	sort_5(int *a, int *b, int len)
 	stack.len_b = -1;
 	if (len == 4)
 	{
-		stack.len_b += push_min_b(a, b, stack.len_a);
+		stack.len_b += push_min_b(a, b, stack.len_a, stack.len_b);
 		stack.len_a--;
-		stack.len_b += push_max_b(a, b, stack.len_a);
+		stack.len_b += push_max_b(a, b, stack.len_a, stack.len_b);
 		stack.len_a--;
 		sort_3(a, stack.len_a);
 		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
@@ -89,7 +89,7 @@ int	sort_5(int *a, int *b, int len)
 	}
 	else
 	{
-		stack.len_b += push_min_b(a, b, stack.len_a);
+		stack.len_b += push_min_b(a, b, stack.len_a, stack.len_b);
 		stack.len_a--;
 		sort_3(a, stack.len_a);
 		stack.len_a += push_a_test(a, b, stack.len_a, stack.len_b);
