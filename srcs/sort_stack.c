@@ -6,7 +6,7 @@
 /*   By: gkehren <gkehren@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:15:41 by gkehren           #+#    #+#             */
-/*   Updated: 2022/06/18 17:00:46 by gkehren          ###   ########.fr       */
+/*   Updated: 2022/06/19 22:16:05 by gkehren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,77 +40,6 @@ void	sort_100(int *a, int *b, int len)
 	push_a_mediane(&stack);
 }
 
-int	push_mediane(struct s_stack *stack)
-{
-	int	i;
-	int	mediane;
-
-	i = 0;
-	mediane = find_mediane(stack->a, stack->len_a);
-	while (i < stack->len_a + 1)
-	{
-		if (stack->a[i] < mediane)
-		{
-			need_top_a(stack->a, stack->len_a, stack->a[i]);
-			push_b(stack->a, stack->b, stack->len_a, stack->len_b);
-			stack->len_a--;
-			stack->len_b++;
-			i = 0;
-		}
-		else
-			i++;
-	}
-	return (0);
-}
-
-int	push_mediane_little(struct s_stack *stack, int x)
-{
-	int	i;
-	int	mediane;
-
-	i = 0;
-	mediane = find_mediane(stack->a, stack->len_a);
-	mediane -= (mediane / x);
-	while (i < stack->len_a + 1)
-	{
-		if (stack->a[i] < mediane)
-		{
-			need_top_a(stack->a, stack->len_a, stack->a[i]);
-			push_b(stack->a, stack->b, stack->len_a, stack->len_b);
-			stack->len_a--;
-			stack->len_b++;
-			i = 0;
-		}
-		else
-			i++;
-	}
-	return (0);
-}
-
-int	push_b_mediane_little(struct s_stack *stack)
-{
-	int	i;
-	int	mediane;
-
-	i = 0;
-	mediane = find_mediane(stack->b, stack->len_b);
-	mediane += (mediane / 2);
-	while (i < stack->len_b + 1)
-	{
-		if (stack->b[i] > mediane)
-		{
-			need_top_b(stack->b, stack->len_b, stack->b[i]);
-			push_a(stack->a, stack->b, stack->len_a, stack->len_b);
-			stack->len_b--;
-			stack->len_a++;
-			i = 0;
-		}
-		else
-			i++;
-	}
-	return (0);
-}
-
 void	sort_any(int *a, int *b, int len)
 {
 	struct s_stack	stack;
@@ -137,6 +66,7 @@ void	sort_any(int *a, int *b, int len)
 
 int	sort_stack(int *a, int *b, int len)
 {
+	a = abs_stack(a, len);
 	if (is_sort_asc(a, len) == 1)
 		return (0);
 	else if (len == 1)
